@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Multi-Web Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header Navigation Bar -->
+    <header class="sticky top-0 z-50 w-full bg-slate-900 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('overview')">
+                <span class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-sm border border-emerald-500/30">HUB</span>
+                <span class="font-bold tracking-tight text-white hidden md:inline">Multi-Project Portal</span>
+            </div>
+
+            <!-- Tab Navigation Links -->
+            <nav class="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium overflow-x-auto py-2">
+                <button onclick="switchTab('overview')" id="nav-overview" class="nav-btn px-3 py-2 rounded-lg bg-emerald-600 text-white transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-house"></i> Overview
+                </button>
+
+                <!-- Direct External Links -->
+                <a href="https://tiny-gecko-d5f32c.netlify.app" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-cookie-bite text-amber-400"></i> Mooncake Festival <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                </a>
+
+                <a href="https://drowsiness-detection-361eaa.netlify.app/" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-eye-slash text-amber-400"></i> Drowsiness AI <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                </a>
+
+                <!-- Internal CV Modules -->
+                <button onclick="switchTab('phillbert')" id="nav-phillbert" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-user-gear text-emerald-400"></i> CV Phillbert
+                </button>
+                <button onclick="switchTab('devin')" id="nav-devin" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-id-card text-blue-400"></i> CV Devin
+                </button>
+                <button onclick="switchTab('griffin')" id="nav-griffin" class="nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap">
+                    <i class="fa-solid fa-file-invoice text-cyan-400"></i> CV Griffin
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow relative">
+
+        <!-- TAB 1: OVERVIEW DASHBOARD -->
+        <section id="overview" class="tab-content active p-6 max-w-6xl mx-auto space-y-8">
+            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-center space-y-4">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider border border-emerald-500/20">Portal Terintegrasi</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-white">Interactive Web Center</h1>
+                <p class="text-slate-400 text-sm max-w-2xl mx-auto">Pusat navigasi proyek web interaktif dan tautan langsung situs resmi.</p>
+            </div>
+
+            <!-- Web Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Mooncake Festival Direct Card -->
+                <a href="https://tiny-gecko-d5f32c.netlify.app" target="_blank" rel="noopener" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all space-y-4 group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cookie-bite"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Mooncake Festival</h3>
+                        <p class="text-slate-400 text-xs mt-1">Situs web Mooncake Festival (tiny-gecko-d5f32c.netlify.app).</p>
+                    </div>
+                    <span class="text-xs font-medium text-amber-400 flex items-center gap-1">Kunjungi Website <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
+                </a>
+
+                <!-- Drowsiness Detection Card -->
+                <a href="https://drowsiness-detection-361eaa.netlify.app/" target="_blank" rel="noopener" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-amber-500/50 cursor-pointer transition-all space-y-4 group">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Drowsiness Detection AI</h3>
+                        <p class="text-slate-400 text-xs mt-1">Aplikasi pendeteksi kantuk real-time (drowsiness-detection-361eaa.netlify.app).</p>
+                    </div>
+                    <span class="text-xs font-medium text-amber-400 flex items-center gap-1">Kunjungi Website <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></span>
+                </a>
+
+                <!-- Portofolio Phillbert Card -->
+                <div onclick="switchTab('phillbert')" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/50 cursor-pointer transition-all space-y-4 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">CV Phillbert</h3>
+                        <p class="text-slate-400 text-xs mt-1">Portofolio Phillbert Vaustino[cite: 4].</p>
+                    </div>
+                    <span class="text-xs font-medium text-emerald-400 flex items-center gap-1">Buka Dokumen <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                </div>
+
+                <!-- CV Devin Card -->
+                <div onclick="switchTab('devin')" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-blue-500/50 cursor-pointer transition-all space-y-4 group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">CV Devin</h3>
+                        <p class="text-slate-400 text-xs mt-1">CV Devin Eidyawan[cite: 1].</p>
+                    </div>
+                    <span class="text-xs font-medium text-blue-400 flex items-center gap-1">Buka Dokumen <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                </div>
+
+                <!-- CV Griffin Card -->
+                <div onclick="switchTab('griffin')" class="bg-slate-900 p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/50 cursor-pointer transition-all space-y-4 group">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">CV Griffin</h3>
+                        <p class="text-slate-400 text-xs mt-1">Curriculum Vitae Griffin Grehano[cite: 2].</p>
+                    </div>
+                    <span class="text-xs font-medium text-cyan-400 flex items-center gap-1">Buka Dokumen <i class="fa-solid fa-arrow-right text-xs"></i></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: CV PHILLBERT -->
+        <section id="phillbert" class="tab-content">
+            <iframe id="iframe-phillbert" class="w-full h-[calc(100vh-4rem)] border-none"></iframe>
+        </section>
+
+        <!-- TAB 3: CV DEVIN -->
+        <section id="devin" class="tab-content">
+            <iframe id="iframe-devin" class="w-full h-[calc(100vh-4rem)] border-none"></iframe>
+        </section>
+
+        <!-- TAB 4: CV GRIFFIN -->
+        <section id="griffin" class="tab-content">
+            <iframe id="iframe-griffin" class="w-full h-[calc(100vh-4rem)] border-none"></iframe>
+        </section>
+
+    </main>
+
+    <!-- Tab Switching & Exact HTML Injection Script -->
+    <script>
+        const htmlPhillbert = `<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phillbert Vaustino - Personal Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"><\/script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    <\/script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 z-50 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 px-4 py-3 rounded-xl shadow-lg flex items-center space-x-3 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+        <span id="toast-message" class="text-sm font-medium">Teks berhasil disalin!</span>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-950/70 border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-black text-sm">PV</span>
+                <span>Phillbert</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors">Tentang</a>
+                <a href="#achievements" class="text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors">Prestasi</a>
+                <a href="#skills" class="text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors">Keahlian</a>
+                <a href="#education" class="text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors">Pendidikan</a>
+                <a href="#contact" class="text-slate-600 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400 transition-colors">Kontak</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/50">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-slate-700 hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-amber-400"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 focus:outline-none">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900">Tentang</a>
+            <a href="#achievements" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900">Prestasi</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900">Keahlian</a>
+            <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900">Pendidikan</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900">Kontak</a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 py-12 flex-grow">
+
+        <!-- Hero & About Section -->
+        <section id="about" class="pt-4 scroll-mt-24">
+            <div class="flex flex-col md:flex-row gap-8 items-start justify-between">
+                <div class="space-y-6 max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Pelajar & Esports Enthusiast
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                            Phillbert Vaustino
+                        </h1>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Siswa SMP BPK Penabur Holis dengan minat tinggi pada pelajaran logika (Matematika & Fisika), perakitan & pemecahan masalah perangkat keras, serta kompetisi gaming.
+                        </p>
+                    </div>
+
+                    <!-- Quick Bio Highlights -->
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 shadow-sm space-y-3">
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-brain text-emerald-500 mt-1"></i>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">
+                                Memiliki kelebihan utama di mata pelajaran bernalar seperti <strong class="text-slate-900 dark:text-white">Matematika</strong> dan <strong class="text-slate-900 dark:text-white">Fisika</strong> dengan catatan nilai rata-rata yang lumayan bagus.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-gamepad text-emerald-500 mt-1"></i>
+                            <p class="text-sm text-slate-600 dark:text-slate-300">
+                                Memiliki keahlian dan bakat kompetitif di bidang game serta minat kuat pada aspek teknis komputer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="#contact" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm transition-all shadow-lg shadow-emerald-500/20 active:scale-95 flex items-center gap-2">
+                            <i class="fa-solid fa-envelope"></i> Hubungi Saya
+                        </a>
+                        <button onclick="copyToClipboard('Phillbertv2@gmail.com', 'Email disalin!')" class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm transition-all active:scale-95 flex items-center gap-2">
+                            <i class="fa-regular fa-copy"></i> Salin Email
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Badge / Avatar Card -->
+                <div class="w-full md:w-auto flex-shrink-0 flex justify-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 w-full max-w-xs space-y-4 text-center">
+                            <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white text-3xl font-bold shadow-md">
+                                PV
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white">Phillbert Vaustino</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SMP BPK Penabur Holis</p>
+                            </div>
+                            <div class="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex justify-around text-xs text-slate-600 dark:text-slate-400">
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white text-base">3+</div>
+                                    <span>Penghargaan</span>
+                                </div>
+                                <div class="w-px bg-slate-200 dark:bg-slate-800"></div>
+                                <div>
+                                    <div class="font-bold text-slate-900 dark:text-white text-base">2026</div>
+                                    <span>Lulus SMP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="scroll-mt-24 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+                        <i class="fa-solid fa-trophy text-amber-500"></i> Prestasi & Kompetisi
+                    </h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Pencapaian dalam bidang akademik dan turnamen esports.</p>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="flex gap-2 p-1 bg-slate-200/60 dark:bg-slate-900 rounded-xl text-xs font-medium w-fit">
+                    <button id="filter-all" onclick="filterAchievements('all')" class="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-white transition-all">Semua</button>
+                    <button id="filter-math" onclick="filterAchievements('math')" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Matematika</button>
+                    <button id="filter-gaming" onclick="filterAchievements('gaming')" class="px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Esports</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="achievements-grid">
+                <!-- Achievement Item 1 -->
+                <div class="achievement-card math bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/50 transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-amber-500/10 group-hover:text-amber-500 transition-all">
+                        <i class="fa-solid fa-medal text-lg"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">2025 - 2026</span>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">Silver Medal</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">IKMC (International Kangaroo Mathematics Contest)</p>
+                </div>
+
+                <!-- Achievement Item 2 -->
+                <div class="achievement-card math bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/50 transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-amber-700/10 group-hover:text-amber-700 transition-all">
+                        <i class="fa-solid fa-award text-lg"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">2023 - 2024</span>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">Bronze Medal</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">IKMC (International Kangaroo Mathematics Contest)</p>
+                </div>
+
+                <!-- Achievement Item 3 -->
+                <div class="achievement-card gaming bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-emerald-500/50 transition-all group">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-blue-500/10 group-hover:text-blue-500 transition-all">
+                        <i class="fa-solid fa-gamepad text-lg"></i>
+                    </div>
+                    <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">2026</span>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base mt-1">Juara 2 Turnamen MLBB</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Turnamen Mobile Legends Bina Bakti 2</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-24 space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+                    <i class="fa-solid fa-gears text-emerald-500"></i> Keahlian & Keterampilan
+                </h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Kemampuan logika, teknis, dan hobi yang ditekuni.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <!-- Skill Badge 1 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-calculator"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Math & Fisika</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Akademik Logika</p>
+                    </div>
+                </div>
+
+                <!-- Skill Badge 2 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-head-side-virus"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Logical Thinking</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Analitis</p>
+                    </div>
+                </div>
+
+                <!-- Skill Badge 3 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Perakitan PC</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Hardware</p>
+                    </div>
+                </div>
+
+                <!-- Skill Badge 4 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-bug"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Troubleshooting</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Perbaikan Teknis</p>
+                    </div>
+                </div>
+
+                <!-- Skill Badge 5 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Competitive Gaming</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Esports & Strategi</p>
+                    </div>
+                </div>
+
+                <!-- Skill Badge 6 -->
+                <div class="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:shadow-md transition-all">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-slate-900 dark:text-white">Technical Skills</h4>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Komputer & IT</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="scroll-mt-24 space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+                    <i class="fa-solid fa-graduation-cap text-emerald-500"></i> Riwayat Pendidikan
+                </h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Jejak pendidikan formal yang telah ditempuh.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-8 pl-6">
+                <!-- Timeline item 1 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-emerald-500 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-all"></div>
+                    <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Lulus 2026</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">SMP BPK Penabur Holis</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Sekolah Menengah Pertama</p>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-slate-50 dark:border-slate-950 group-hover:scale-125 transition-all"></div>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Lulus 2023</span>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white mt-0.5">SD Holy Kids</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Sekolah Dasar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-24 space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5">
+                    <i class="fa-solid fa-address-book text-emerald-500"></i> Informasi Kontak
+                </h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Jangan ragu untuk menghubungi saya melalui saluran berikut.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Phone -->
+                <div onclick="copyToClipboard('+62895638897799', 'Nomor telepon disalin!')" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-emerald-500/50 transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Telepon / WA</span>
+                            <span class="text-sm font-semibold text-slate-900 dark:text-white">+62 895 6388 97799</span>
+                        </div>
+                    </div>
+                    <i class="fa-regular fa-copy text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                </div>
+
+                <!-- Email -->
+                <div onclick="copyToClipboard('Phillbertv2@gmail.com', 'Email disalin!')" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-emerald-500/50 transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Email</span>
+                            <span class="text-sm font-semibold text-slate-900 dark:text-white">Phillbertv2@gmail.com</span>
+                        </div>
+                    </div>
+                    <i class="fa-regular fa-copy text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                </div>
+
+                <!-- Address -->
+                <div onclick="copyToClipboard('TKI 1 Blok O No 169', 'Alamat disalin!')" class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer hover:border-emerald-500/50 transition-all flex items-center justify-between group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-400 block font-medium">Alamat</span>
+                            <span class="text-sm font-semibold text-slate-900 dark:text-white">TKI 1 Blok O No 169</span>
+                        </div>
+                    </div>
+                    <i class="fa-regular fa-copy text-slate-400 group-hover:text-emerald-500 transition-colors"></i>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-6 bg-white dark:bg-slate-950 transition-colors">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+            <p>&copy; 2026 Phillbert Vaustino. Minimalist Personal Web Portfolio.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function updateThemeUI() {
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.add('hidden');
+                lightIcon.classList.remove('hidden');
+            } else {
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            }
+        }
+
+        updateThemeUI();
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            updateThemeUI();
+        });
+
+        // Mobile Nav Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy to Clipboard Utility
+        function copyToClipboard(text, message) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(message || 'Teks berhasil disalin!');
+        }
+
+        // Toast Notification Function
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Filter Achievements Logic
+        function filterAchievements(category) {
+            const cards = document.querySelectorAll('.achievement-card');
+            const buttons = ['all', 'math', 'gaming'];
+
+            buttons.forEach(btn => {
+                const el = document.getElementById('filter-' + btn);
+                if (btn === category) {
+                    el.className = "px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-white transition-all";
+                } else {
+                    el.className = "px-3 py-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all";
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    <\/script>
+</body>
+</html>`;
+
+        const htmlDevin = `<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV — Devin Eidyawan</title>
+  <meta name="description" content="CV Devin Eidyawan — Siswa SMAK HOLIS" />
+  <style>
+    :root{
+      --blue-1:#e6f0ff;
+      --blue-2:#d7e8ff;
+      --accent:#0b63d6;
+      --accent-2:#1e90ff;
+      --card:#ffffff;
+      --text:#07203a;
+      --muted:#5b6b7a;
+      --soft:#f3f9ff;
+      --radius:14px;
+      --container:980px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background:
+        radial-gradient(800px 300px at 10% 10%, rgba(30,144,255,0.08), transparent 12%),
+        radial-gradient(600px 240px at 90% 80%, rgba(11,99,214,0.05), transparent 14%),
+        linear-gradient(180deg,var(--blue-1),var(--blue-2));
+      min-height:100%;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding:28px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--container);
+      background:linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.95));
+      border-radius:18px;
+      box-shadow:0 18px 50px rgba(9,30,66,0.08);
+      border:1px solid rgba(11,99,214,0.06);
+      overflow:hidden;
+    }
+
+    /* decorative header band */
+    .header-band{
+      position:relative;
+      padding:28px 28px 18px 28px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      background:
+        linear-gradient(90deg, rgba(11,99,214,0.06), rgba(30,144,255,0.02));
+    }
+    .header-band::before{
+      content:"";
+      position:absolute;
+      right:-120px;
+      top:-80px;
+      width:420px;
+      height:420px;
+      background:radial-gradient(circle at 30% 30%, rgba(30,144,255,0.12), rgba(11,99,214,0.04));
+      transform:rotate(18deg);
+      border-radius:50%;
+      filter:blur(22px);
+      pointer-events:none;
+    }
+    .header-band::after{
+      content:"";
+      position:absolute;
+      left:-80px;
+      bottom:-40px;
+      width:260px;
+      height:260px;
+      background:linear-gradient(135deg, rgba(11,99,214,0.06), rgba(30,144,255,0.02));
+      transform:rotate(-12deg);
+      border-radius:28%;
+      filter:blur(10px);
+      pointer-events:none;
+    }
+
+    /* photo frame (no text or overlays inside) */
+    .photo-frame{
+      width:180px;
+      height:180px;
+      border-radius:16px;
+      overflow:hidden;
+      background:linear-gradient(180deg,var(--soft),#fff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      cursor:pointer;
+      border:2px solid rgba(11,99,214,0.08);
+      transition:transform .18s ease, box-shadow .18s ease;
+      flex-shrink:0;
+    }
+    .photo-frame:focus{outline:none;box-shadow:0 8px 28px rgba(11,99,214,0.12);transform:translateY(-3px)}
+    .photo-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:50% 35%;
+      display:block;
+      transition:object-position .15s ease;
+      background-color:transparent;
+    }
+
+    /* decorative shapes around header to avoid empty look */
+    .decor-left, .decor-right{
+      position:absolute;
+      pointer-events:none;
+      opacity:0.12;
+      filter:blur(10px);
+      border-radius:28%;
+    }
+    .decor-left{left:-40px;top:10px;width:160px;height:160px;background:conic-gradient(from 180deg at 50% 50%, rgba(11,99,214,0.08), rgba(30,144,255,0.02));}
+    .decor-right{right:-40px;bottom:10px;width:220px;height:220px;background:radial-gradient(circle at 30% 30%, rgba(30,144,255,0.12), transparent 40%);}
+
+    /* intro */
+    .intro{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      z-index:1;
+    }
+    .intro h1{
+      margin:0;
+      font-size:28px;
+      color:var(--accent-2);
+      letter-spacing:0.2px;
+    }
+    .intro .role{margin:0;color:var(--muted);font-weight:600}
+    .contact{
+      margin-top:10px;
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .contact a{color:var(--accent);text-decoration:none}
+    .contact a:hover{text-decoration:underline}
+
+    /* main grid */
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:20px;
+      padding:22px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 8px 24px rgba(11,63,120,0.04);
+      border:1px solid rgba(11,99,214,0.03);
+    }
+    .card h2{margin:0 0 12px 0;color:var(--accent);font-size:16px}
+    ul.clean{padding-left:18px;margin:8px 0}
+    ul.clean li{margin:8px 0;color:var(--text)}
+
+    /* right column */
+    .side .card{margin-bottom:12px}
+
+    /* controls */
+    .controls{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+    input[type="range"]{width:100%;accent-color:var(--accent)}
+
+    /* decorative footer wave */
+    .wave{
+      margin:18px 22px 28px 22px;
+      height:56px;
+      background:linear-gradient(180deg, rgba(11,99,214,0.06), rgba(30,144,255,0.02));
+      border-radius:12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .wave svg{position:absolute;left:0;bottom:0;width:100%;height:100%}
+
+    /* footer */
+    footer{padding:18px 22px 28px 22px;text-align:center;color:var(--muted);font-size:14px}
+
+    /* responsive */
+    @media (max-width:880px){
+      .grid{grid-template-columns:1fr}
+      .header-band{flex-direction:row;gap:14px}
+      .photo-frame{width:140px;height:140px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <div class="header-band" role="banner">
+      <div class="decor-left" aria-hidden="true"></div>
+      <div class="decor-right" aria-hidden="true"></div>
+
+      <div style="position:relative;display:flex;align-items:center;">
+        <div class="photo-frame" id="photoFrame" tabindex="0" aria-label="Klik untuk memilih foto">
+          <img id="profileImg" src="" alt="Foto profil" />
+        </div>
+      </div>
+
+      <div class="intro" role="region" aria-label="Informasi profil">
+        <h1>DEVIN EIDYAWAN</h1>
+        <p class="role">SISWA SMAK HOLIS</p>
+
+        <div class="contact" aria-hidden="false">
+          <div><strong>Email</strong><br><a href="mailto:vin3434@gmail.com">vin3434@gmail.com</a></div>
+          <div><strong>Telepon</strong><br>+62 822-2345-767</div>
+          <div><strong>Sekolah</strong><br><a href="https://bpkpenabur.or.id" target="_blank" rel="noopener">bpkpenabur.or.id</a></div>
+        </div>
+
+        <div class="controls" aria-hidden="false">
+          <input id="fileInput" type="file" accept="image/*" style="display:none" />
+          <div style="display:flex;gap:10px;align-items:center;margin-top:6px">
+            <div style="font-size:13px;color:var(--muted)">Atur posisi foto</div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <label style="width:36px;color:var(--muted)">X</label>
+            <input id="rangeX" type="range" min="0" max="100" value="50" />
+            <span id="valX" style="width:48px;color:var(--accent);font-weight:700;text-align:right">50%</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <label style="width:36px;color:var(--muted)">Y</label>
+            <input id="rangeY" type="range" min="0" max="100" value="35" />
+            <span id="valY" style="width:48px;color:var(--accent);font-weight:700;text-align:right">35%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" role="main">
+      <div>
+        <section class="card" aria-labelledby="edu">
+          <h2 id="edu">Pendidikan</h2>
+          <ul class="clean">
+            <li><strong>SDK 6 BPK Penabur</strong> — 2017 - 2023</li>
+            <li><strong>SMPK 5 BPK Penabur</strong> — 2023 - 2025</li>
+            <li><strong>SMAK HOLIS BPK Penabur</strong> — 2026 - Sekarang</li>
+          </ul>
+        </section>
+
+        <section class="card" aria-labelledby="exp" style="margin-top:14px">
+          <h2 id="exp">Pengalaman</h2>
+          <div>
+            <strong>Festival Catur Pelajar Nasional</strong>
+            <div class="muted" style="margin-top:6px">2025 - 2026</div>
+            <p style="margin-top:8px">Bermain Catur Tingkat Nasional</p>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="skills" style="margin-top:14px">
+          <h2 id="skills">Keahlian</h2>
+          <ul class="clean">
+            <li>IT</li>
+            <li>Ping pong</li>
+            <li>Bulutangkis</li>
+            <li>Gitar</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section class="card" aria-labelledby="lang">
+          <h2 id="lang">Bahasa</h2>
+          <ul class="clean">
+            <li>English</li>
+            <li>Indonesia</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <div class="wave" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C150,10 350,80 600,40 C850,0 1050,60 1200,30 L1200,60 L0,60 Z" fill="rgba(11,99,214,0.06)"/>
+      </svg>
+    </div>
+
+    <footer>
+      <p>Kontak: <a href="mailto:vin3434@gmail.com" style="color:var(--accent)">vin3434@gmail.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Elements
+    const fileInput = document.getElementById('fileInput');
+    const photoFrame = document.getElementById('photoFrame');
+    const profileImg = document.getElementById('profileImg');
+    const rangeX = document.getElementById('rangeX');
+    const rangeY = document.getElementById('rangeY');
+    const valX = document.getElementById('valX');
+    const valY = document.getElementById('valY');
+
+    // Update object-position and labels
+    function updatePos(x, y){
+      profileImg.style.objectPosition = x + '% ' + y + '%';
+      valX.textContent = x + '%';
+      valY.textContent = y + '%';
+    }
+
+    // Load image file into img element
+    function loadFile(file){
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        profileImg.src = e.target.result;
+        profileImg.alt = 'Foto profil';
+        profileImg.onload = () => tryFaceDetect(profileImg);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Click frame opens file picker
+    photoFrame.addEventListener('click', () => fileInput.click());
+    photoFrame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
+
+    fileInput.addEventListener('change', (e) => {
+      const f = e.target.files && e.target.files[0];
+      if (f && f.type.startsWith('image/')) loadFile(f);
+    });
+
+    // Paste support (Ctrl+V)
+    window.addEventListener('paste', (e) => {
+      const items = e.clipboardData && e.clipboardData.items;
+      if (!items) return;
+      for (let i=0;i<items.length;i++){
+        const it = items[i];
+        if (it.kind === 'file' && it.type.startsWith('image/')){
+          const file = it.getAsFile();
+          loadFile(file);
+          return;
+        }
+      }
+    });
+
+    // Slider handlers
+    rangeX.addEventListener('input', () => updatePos(rangeX.value, rangeY.value));
+    rangeY.addEventListener('input', () => updatePos(rangeX.value, rangeY.value));
+
+    // Face detection (if available)
+    async function tryFaceDetect(imgEl){
+      updatePos(50,35);
+      if (!('FaceDetector' in window)) return;
+      try {
+        const detector = new FaceDetector({fastMode:true, maxDetectedFaces:1});
+        await imgEl.decode();
+        const bitmap = await createImageBitmap(imgEl);
+        const faces = await detector.detect(bitmap);
+        if (faces && faces.length > 0){
+          const b = faces[0].boundingBox;
+          const cx = b.x + b.width/2;
+          const cy = b.y + b.height/2;
+          const px = Math.round((cx / bitmap.width) * 100);
+          const py = Math.round((cy / bitmap.height) * 100);
+          rangeX.value = px;
+          rangeY.value = py;
+          updatePos(px, py);
+        }
+      } catch (err) {
+        // ignore and keep defaults
+      }
+    }
+
+    // Placeholder avatar (no visible text inside frame)
+    (function placeholder(){
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none">' +
+        '<rect width="100%" height="100%" fill="%23eaf4ff"/>' +
+        '<g transform="translate(4,3)">' +
+        '<circle cx="8" cy="6" r="4" fill="%23ffffff" stroke="%23cbd5e1" stroke-width="0.5"/>' +
+        '<rect x="0" y="13" width="16" height="6" rx="3" fill="%23ffffff" stroke="%23cbd5e1" stroke-width="0.5"/>' +
+        '</g></svg>';
+      profileImg.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+      profileImg.alt = 'Avatar';
+    })();
+
+    // Initialize
+    updatePos(50,35);
+  <\/script>
+</body>
+</html>`;
+
+        const htmlGriffin = `<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Curriculum Vitae - Griffin Grehano</title>
+  <style>
+    :root{
+      --bg:#f3f6fb;
+      --card:#ffffff;
+      --accent:#0b5ed7;
+      --accent-2:#06b6d4;
+      --muted:#6b7280;
+      --text:#0f172a;
+      --soft:#eef6ff;
+      --shadow: 0 10px 30px rgba(11,94,215,0.08);
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#ffffff 60%);
+      color:var(--text);
+      padding:36px;
+      display:flex;
+      justify-content:center;
+      font-size:15px;
+    }
+    .cv{
+      width:900px;
+      max-width:95%;
+      background:var(--card);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:320px 1fr;
+    }
+    .sidebar{
+      background:linear-gradient(180deg,var(--soft),#ffffff);
+      padding:28px;
+      border-right:1px solid rgba(15,23,42,0.04);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+    .photo-wrap{
+      width:180px;
+      height:180px;
+      border-radius:12px;
+      overflow:hidden;
+      border:6px solid rgba(255,255,255,0.9);
+      box-shadow:0 8px 20px rgba(11,94,215,0.12);
+      background:linear-gradient(135deg, rgba(11,94,215,0.06), rgba(6,182,212,0.04));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .photo-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .photo-placeholder{
+      color:var(--muted);
+      font-size:13px;
+      text-align:center;
+      padding:8px;
+    }
+    .name{ text-align:center; }
+    .name h1{
+      margin:6px 0 0 0;
+      font-size:22px;
+      color:var(--accent);
+    }
+    .role{
+      font-size:13px;
+      color:var(--muted);
+      margin-top:4px;
+      text-transform:uppercase;
+      font-weight:600;
+      letter-spacing:0.08em;
+    }
+    .contact{ width:100%; margin-top:6px; padding-top:8px; border-top:1px dashed rgba(15,23,42,0.04); }
+    .contact .item{ display:flex; gap:10px; align-items:flex-start; margin:10px 0; }
+    .contact .label{ width:28px; color:var(--accent-2); font-weight:700; }
+    .contact .value{ color:var(--text); font-size:14px; word-break:break-word; }
+
+    .main{ padding:28px 32px; }
+    .section{ margin-bottom:18px; }
+    .section h3{
+      margin:0 0 10px 0;
+      font-size:13px;
+      color:var(--accent);
+      border-bottom:2px solid rgba(11,94,215,0.06);
+      padding-bottom:8px;
+    }
+    .field{ display:flex; gap:12px; margin:8px 0; align-items:flex-start; }
+    .label{ width:180px; color:var(--muted); font-weight:700; font-size:13px; }
+    .value{ flex:1; color:var(--text); font-size:15px; white-space:pre-line; }
+    ul.skills, ul.experience{ margin:6px 0 0 0; padding-left:18px; color:var(--text); }
+    ul.skills li, ul.experience li{ margin:6px 0; }
+
+    .controls{
+      width:100%;
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px dashed rgba(15,23,42,0.04);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .controls label{ font-size:13px; color:var(--muted); font-weight:700; }
+    .color-row{ display:flex; gap:8px; align-items:center; }
+    .color-row input[type="color"]{ width:44px; height:34px; border-radius:6px; border:1px solid rgba(0,0,0,0.06); padding:0; }
+    .file-input{ font-size:13px; }
+
+    .actions{ display:flex; gap:10px; margin-top:6px; justify-content:flex-end; }
+    .btn{ background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; padding:8px 12px; border-radius:8px; font-weight:700; font-size:13px; text-decoration:none; box-shadow:0 6px 18px rgba(6,182,212,0.12); border:none; cursor:pointer; }
+
+    @media (max-width:880px){
+      .cv{grid-template-columns:1fr;}
+      .sidebar{flex-direction:row; gap:12px; padding:18px; align-items:center; justify-content:flex-start; border-right:none; border-bottom:1px solid rgba(15,23,42,0.04)}
+      .photo-wrap{width:96px;height:96px;border-radius:10px}
+      .main{padding:18px}
+      .label{width:140px}
+    }
+  </style>
+</head>
+<body>
+  <article class="cv" role="document" aria-label="Curriculum Vitae Griffin Grehano">
+    <!-- SIDEBAR KIRI: FOTO + NAMA + KONTROL -->
+    <aside class="sidebar" aria-labelledby="sidebar-title">
+      <div class="photo-wrap" id="photoWrap" aria-hidden="false">
+        <div class="photo-placeholder" id="photoPlaceholder">Tidak ada foto<br>Unggah untuk menampilkan</div>
+        <!-- img akan disisipkan oleh JS saat pengguna memilih file -->
+      </div>
+
+      <div class="name" id="sidebar-title">
+        <div style="font-size:12px;color:var(--muted);font-weight:700">GRIFFIN GREHANO</div>
+        <h1 style="margin:6px 0 0 0">GRIFFIN GREHANO</h1>
+        <div class="role">SISWA</div>
+      </div>
+
+      <div class="contact" aria-label="Kontak">
+        <div class="item"><div class="label">📞</div><div class="value">0882002222977</div></div>
+        <div class="item"><div class="label">✉️</div><div class="value">grehano8@gmail.com</div></div>
+        <div class="item"><div class="label">📍</div><div class="value">Tki V, Sommerville 5 No 42a</div></div>
+      </div>
+
+      <div class="controls" aria-hidden="false">
+        <div>
+          <label for="photoInput">Unggah Foto (jpg, png)</label><br>
+          <input id="photoInput" class="file-input" type="file" accept="image/*" />
+        </div>
+
+        <div>
+          <label>Warna Utama dan Aksen</label>
+          <div class="color-row">
+            <div style="display:flex;flex-direction:column;align-items:flex-start;">
+              <small style="color:var(--muted);font-weight:700">Warna Utama</small>
+              <input id="colorPrimary" type="color" value="#0b5ed7" title="Warna Utama" />
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-start;">
+              <small style="color:var(--muted);font-weight:700">Warna Sekunder</small>
+              <input id="colorSecondary" type="color" value="#06b6d4" title="Warna Sekunder" />
+            </div>
+            <button id="resetColors" class="btn" style="padding:6px 10px;font-size:13px;">Reset</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- KANAN: ISI UTAMA -->
+    <main class="main">
+      <section class="section" aria-labelledby="data-pribadi">
+        <h3 id="data-pribadi">DATA PRIBADI</h3>
+        <div class="field"><div class="label">Nama</div><div class="value">Griffin Grehano</div></div>
+        <div class="field"><div class="label">Tempat, Tanggal Lahir</div><div class="value">Pontianak, 6 Maret 2011</div></div>
+        <div class="field"><div class="label">Jenis Kelamin</div><div class="value">Laki-laki</div></div>
+        <div class="field"><div class="label">Agama</div><div class="value">Kristen</div></div>
+        <div class="field"><div class="label">Kewarganegaraan</div><div class="value">Indonesia</div></div>
+        <div class="field"><div class="label">Status</div><div class="value">Belum Menikah</div></div>
+      </section>
+
+      <section class="section" aria-labelledby="pendidikan">
+        <h3 id="pendidikan">PENDIDIKAN</h3>
+        <div class="field"><div class="label">SD</div><div class="value">SD Smart Holy Kids — 2017 - 2023</div></div>
+        <div class="field"><div class="label">SMP</div><div class="value">SMP Talenta — 2023 - 2026</div></div>
+        <div class="field"><div class="label">SMA</div><div class="value">SMA BPK PENABUR Holis — 2026 - 2029</div></div>
+      </section>
+
+      <section class="section" aria-labelledby="keahlian">
+        <h3 id="keahlian">KEAHLIAN</h3>
+        <ul class="skills" aria-label="Daftar keahlian">
+          <li>Komunikasi Efektif</li>
+          <li>Olahraga</li>
+          <li>Kerjasama Tim</li>
+          <li>Bahasa Inggris</li>
+        </ul>
+      </section>
+
+      <section class="section" aria-labelledby="pengalaman">
+        <h3 id="pengalaman">PENGALAMAN</h3>
+        <ul class="experience" aria-label="Daftar pengalaman">
+          <li>Mengikuti Lomba olahraga</li>
+          <li>Mengikuti lomba pelajaran bahasa inggris</li>
+        </ul>
+      </section>
+
+      <div class="actions" aria-hidden="true">
+        <button class="btn" onclick="window.print();">Cetak / Unduh</button>
+      </div>
+    </main>
+  </article>
+
+  <script>
+    // Elemen
+    const photoInput = document.getElementById('photoInput');
+    const photoWrap = document.getElementById('photoWrap');
+    const photoPlaceholder = document.getElementById('photoPlaceholder');
+    const colorPrimary = document.getElementById('colorPrimary');
+    const colorSecondary = document.getElementById('colorSecondary');
+    const resetColors = document.getElementById('resetColors');
+
+    // Muat preferensi dari localStorage jika ada
+    const savedPrimary = localStorage.getItem('cv_color_primary');
+    const savedSecondary = localStorage.getItem('cv_color_secondary');
+    if (savedPrimary) {
+      document.documentElement.style.setProperty('--accent', savedPrimary);
+      colorPrimary.value = savedPrimary;
+    }
+    if (savedSecondary) {
+      document.documentElement.style.setProperty('--accent-2', savedSecondary);
+      colorSecondary.value = savedSecondary;
+    }
+
+    // Fungsi untuk menampilkan foto yang dipilih
+    photoInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        // Hapus placeholder jika ada
+        photoPlaceholder.style.display = 'none';
+        // Hapus img lama jika ada
+        const existingImg = photoWrap.querySelector('img');
+        if (existingImg) existingImg.remove();
+        // Buat elemen img baru
+        const img = document.createElement('img');
+        img.src = evt.target.result;
+        img.alt = 'Foto Griffin Grehano';
+        photoWrap.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Update warna saat pemilih warna berubah
+    function updatePrimaryColor(value) {
+      document.documentElement.style.setProperty('--accent', value);
+      localStorage.setItem('cv_color_primary', value);
+    }
+    function updateSecondaryColor(value) {
+      document.documentElement.style.setProperty('--accent-2', value);
+      localStorage.setItem('cv_color_secondary', value);
+    }
+
+    colorPrimary.addEventListener('input', (e) => updatePrimaryColor(e.target.value));
+    colorSecondary.addEventListener('input', (e) => updateSecondaryColor(e.target.value));
+
+    // Reset ke warna default
+    resetColors.addEventListener('click', () => {
+      const defaultPrimary = '#0b5ed7';
+      const defaultSecondary = '#06b6d4';
+      colorPrimary.value = defaultPrimary;
+      colorSecondary.value = defaultSecondary;
+      updatePrimaryColor(defaultPrimary);
+      updateSecondaryColor(defaultSecondary);
+    });
+  <\/script>
+</body>
+</html>`;
+
+        // Inject full exact HTML strings into iframes
+        document.getElementById('iframe-phillbert').srcdoc = htmlPhillbert;
+        document.getElementById('iframe-devin').srcdoc = htmlDevin;
+        document.getElementById('iframe-griffin').srcdoc = htmlGriffin;
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-3 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap";
+            });
+
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            const activeNavBtn = document.getElementById('nav-' + tabId);
+            if (activeNavBtn) {
+                activeNavBtn.className = "nav-btn px-3 py-2 rounded-lg bg-emerald-600 text-white transition-all flex items-center gap-1.5 whitespace-nowrap shadow-md";
+            }
+        }
+    </script>
+</body>
+</html>
